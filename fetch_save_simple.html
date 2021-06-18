@@ -1,0 +1,52 @@
+<html>
+	<head>
+	<title>fetch demo</title>
+	</head>
+	<body>
+	
+	<h1> Random Fetch Archiving Test</h1>
+	
+	<p id="news"> </p>
+
+	<script type="text/javascript">
+
+		var lastRand, randNum;
+		function rand()
+			{
+			    while(randNum == lastRand)
+			        randNum = (new Date().getTime()*Math.PI)%1;
+
+				return lastRand = randNum;
+			};
+
+		var urir = "https://www.cs.odu.edu/~kgarg/test/a.json";
+		var argument = rand()/rand();
+		console.log(argument);
+
+		var rand_url = urir+ "?" + argument;
+		
+		let headers = new Headers();
+
+		fetch(rand_url, {
+		    method: 'GET',
+		    //redirect: 'follow',
+		    //referrerPolicy: 'no-referrer'
+		  })
+			.then(response => response.json())
+			.then(data => {
+                var x = "";
+                for (i in data.news) 
+                    {
+                        d = data.news[i]
+                        x += "<h3>" + d.headline + "</h3>";
+                        x += d.date + "<br>";
+                    }
+                document.getElementById("news").innerHTML = x;
+
+            });
+
+
+	</script>
+
+	</body>
+	</html>
