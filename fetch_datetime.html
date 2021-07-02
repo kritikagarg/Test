@@ -22,10 +22,22 @@
 
 	<script type="text/javascript">
 
+		var lastRand, randNum;
+		function rand()
+			{
+			    while(randNum == lastRand)
+			        randNum = (new Date().getTime()*Math.PI)%1;
+
+				return lastRand = randNum;
+			};
+
 	
 		var time_api = "https://worldtimeapi.org/api/timezone/Etc/UTC";
+		var argument = rand()/rand();
+		var rand_url = time_api+ "?tsp=" + argument;
 
-		fetch(time_api)
+
+		fetch(rand_url)
 			.then(response => response.json())
 			.then(data => {
 	            var dt = data.utc_datetime;
