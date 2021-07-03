@@ -1,0 +1,56 @@
+<html>
+	<head>
+	<title>fetch framed demo</title>
+	</head>
+	<body>
+	
+	<h1>Fetch Frame Testing</h1>
+	
+	<p id="adt"> </p>
+	<p id="inframe"> </p>
+
+
+	<script>
+		var pathname = window.location.pathname;
+		var archivetime = pathname.split("/");
+		var at = archivetime[2]; 
+		var archivetime_all =  "This page was archived on: " + at[0] + at[1] + at[2] + at[3] + "-" + at[4] + at[5] + "-" + at[6] + at[7] + "T" + at[8] + at[9] + ":" + at[10] + at[11] + ":" + at[12] + at[13] + "Z (" + at + ")";	
+		document.getElementById("adt").innerHTML = archivetime_all;	
+	</script>
+		
+
+	<script type="text/javascript">
+
+		var lastRand, randNum;
+		function rand()
+			{
+			    while(randNum == lastRand)
+			        randNum = (new Date().getTime()*Math.PI)%1;
+
+				return lastRand = randNum;
+			};
+
+		var urir = "https://www.pilotonline.com/";
+		var argument = rand()/rand();
+		console.log(argument);
+
+		var rand_url = urir+ "?" + argument;
+
+		function FetchIframeURL(rand_url){
+			return fetch(rand_url, {
+        		method: 'GET'
+    		});
+		};
+				
+		FetchIframeURL(rand_url).then(function() {
+		    alert('testing1234');
+		    var iframe = '<iframe id="inframe" height="450" width="900" src="'+rand_url +'"> </iframe>';
+			document.getElementById("inframe").innerHTML = iframe;
+		});
+
+
+	</script>
+
+
+	</body>
+	</html>
