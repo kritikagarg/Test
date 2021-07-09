@@ -1,0 +1,72 @@
+<html>
+	<head>
+	<title>fetch datetime demo</title>
+	</head>
+	<body>
+	
+	<h1>Testing Time API</h1>
+	
+	<p id="adt"> </p>
+	<p>The current ISO time is: <span id="clock"></span></p>
+
+	<!-- <iframe id="inframe"> </iframe> -->
+
+	<script>
+		var pathname = window.location.pathname;
+		var archivetime = pathname.split("/");
+		var at = archivetime[2]; 
+		var archivetime_all =  "This page was archived on: " + at[0] + at[1] + at[2] + at[3] + "-" + at[4] + at[5] + "-" + at[6] + at[7] + "T" + at[8] + at[9] + ":" + at[10] + at[11] + ":" + at[12] + at[13] + "Z (" + at + ")";	
+		document.getElementById("adt").innerHTML = archivetime_all;	
+	</script>
+		
+
+	<script type="text/javascript">
+
+		var lastRand, randNum;
+		function rand()
+			{
+			    while(randNum == lastRand)
+			        randNum = (new Date().getTime()*Math.PI)%1;
+
+				return lastRand = randNum;
+			};
+
+	
+		var time_api = "https://worldtimeapi.org/api/timezone/Etc/UTC";
+		var argument = rand()/rand();
+		var rand_url = time_api+ "?tsp=" + argument;
+
+		let current_datetime = "";
+
+		async function get_datetime(url) {
+
+		    let response = await fetch(url);
+		    let data = await response.json();
+/*		    current_datetime = data.utc_datetime;
+		    return current_datetime;	*/	
+		    current_epoch = data.unixtime;
+		    return current_epoch;
+		}
+
+		async function dt_clock() {
+			current_datetime = await get_datetime(rand_url);
+		   /* document.write(current_datetime)*/
+
+		    var interval = setInterval( () => {
+/*		    	console.log(current_datetime);
+*/		    	var s = new Date(current_datetime * 1000).toISOString();
+   				/*console.log(s);*/
+   				document.getElementById("clock").innerHTML = s;
+   				current_datetime += 1;
+
+		    }, 1000)
+		};
+
+		dt_clock(); 
+
+
+	</script>
+
+
+	</body>
+	</html>
