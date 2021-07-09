@@ -1,0 +1,33 @@
+<html>
+	<head>
+	<title>URL rewriting check</title>
+	</head>
+	<body>
+	
+	<h1>URL rewriting Testing</h1>
+	
+
+	<script type="text/javascript">
+
+		var iframe1 = "<iframe style=\"height:400px;width:900px;\" src=\"https://web.archive.org/web/20300626215427/https://www.pilotonline.com/\"></iframe>";		
+
+	</script>
+
+
+	iframe url outside javascript:
+	<br>
+	<iframe id="inframe" height="400" width="900" src="https://web.archive.org/web/2/https://www.pilotonline.com/"> </iframe>
+	<br>
+	<hr>
+	<br>
+	iframe url inside javascript:	
+	<p>
+	<script>
+	document.write(iframe1);
+	</script>
+	<p>
+
+
+
+	</body>
+	</html>
