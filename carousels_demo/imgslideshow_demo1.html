@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test</title>
+<style>
+#slideshow { 
+  margin: 50px auto; 
+  position: relative; 
+  width: 240px; 
+  height: 240px; 
+  padding: 10px; 
+  box-shadow: 0 0 20px rgba(0,0,0,0.4); 
+}
+
+#slideshow > div { 
+  position: absolute; 
+  top: 10px; 
+  left: 10px; 
+  right: 10px; 
+  bottom: 10px; 
+}
+
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="automate_slideshow.js"></script>
+    
+<body>
+
+<h1>Testing carousel 1</h1>
+
+In this implementation, images are only requested once and then displayed continously in a slideshow.
+
+<div id="slideshow">
+  <div>
+    <img src="https://kritikagarg.github.io/Test/1.jpg" alt="pic1" width="230" height="230">
+  </div>
+  <div>
+   <img src="https://kritikagarg.github.io/Test/2.jpg" alt="pic2" width="230" height="230">
+  </div>
+  <div>
+  <img src="https://kritikagarg.github.io/Test/3.jpg" alt="pic3">
+</div>
+</div>
+
+</body>
+</html>
