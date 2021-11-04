@@ -15,6 +15,6 @@ $(document).ready(function() {
     .end()
     .appendTo('#slideshow');
 
-  }, 4000);
+  }, 1000);
   
 });
