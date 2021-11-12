@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>demo</title>
+	</head>
+	<body>
+	
+	<h1> Iframe chaff Test</h1>
+	<p id="inframe1"> </p>
+	<p id="inframe2"> </p>
+	
+    <script>
+
+    function randarg(){
+        let lastRand, randNum;
+        function rand()
+            {
+                while(randNum == lastRand)
+                    randNum = (new Date().getTime()*Math.PI)%1;
+
+                return lastRand = randNum;
+            };
+
+        const argument = rand()/rand();
+        return argument;
+    }
+
+    function fetch_retry(url, n) {
+        return fetch(url).catch(function(error) {
+            if (n === 1) throw error;
+            return fetch_retry(url, n - 1);
+        });
+    }
+
+    async function get_datetime() {
+        let time_api = "https://worldtimeapi.org/api/timezone/Etc/UTC";
+        let dturl = time_api+ "?=" + randarg();
+        let response = await fetch_retry(dturl, 4);
+        let data = await response.json();
+        current_epoch = data.utc_datetime;
+        return current_epoch;
+    }
+
+    async function main() {
+        current_datetime = await get_datetime();
+        date = current_datetime.split("T")[0].replace(/-/g , '/');
+        console.log(date)
+
+        const iframe1 = "<iframe style=\"display: none;\" src=\"https://www.bostonherald.com/" + date + "/\"></iframe>";
+        const iframe2 = "<iframe style=\"display: none;\" src=\"https://www.chicagotribune.com/" + date + "/\"></iframe>";
+        const iframe2 = "<iframe style=\"display: none;\" src=\"https://nypost.com/2021/11/07/" + date + "/\"></iframe>";
+        
+        document.getElementById("inframe1").innerHTML = iframe1;
+        document.getElementById("inframe2").innerHTML = iframe2;
+
+    };
+    main();
+    </script>    
+
+
+</body>
+	</html>
