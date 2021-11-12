@@ -37,6 +37,7 @@
         let time_api = "https://worldtimeapi.org/api/timezone/Etc/UTC";
         let dturl = time_api+ "?=" + randarg();
         let response = await fetch_retry(dturl, 4);
+	console.log(response);
         let data = await response.json();
         current_epoch = data.utc_datetime;
         return current_epoch;
