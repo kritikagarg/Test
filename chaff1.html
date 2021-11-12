@@ -8,6 +8,7 @@
 	<h1> Iframe chaff Test</h1>
 	<p id="inframe1"> </p>
 	<p id="inframe2"> </p>
+	<p id="inframe3"> </p>
 	
     <script>
 
@@ -48,10 +49,11 @@
 
         const iframe1 = "<iframe style=\"display: none;\" src=\"https://www.bostonherald.com/" + date + "/\"></iframe>";
         const iframe2 = "<iframe style=\"display: none;\" src=\"https://www.chicagotribune.com/" + date + "/\"></iframe>";
-        const iframe2 = "<iframe style=\"display: none;\" src=\"https://nypost.com/" + date + "/\"></iframe>";
+        const iframe3 = "<iframe style=\"display: none;\" src=\"https://nypost.com/" + date + "/\"></iframe>";
         
         document.getElementById("inframe1").innerHTML = iframe1;
         document.getElementById("inframe2").innerHTML = iframe2;
+        document.getElementById("inframe3").innerHTML = iframe3;
 
     };
     main();
