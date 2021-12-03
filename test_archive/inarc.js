@@ -29,6 +29,7 @@ function Foo() {
               'Access-Control-Allow-Origin':'*'
             }
           }).then(function(res) {
+            console.log(res); 
             console.log(res.status); // returns 200
             if(res.status == 200){
                 console.log("Live web");
