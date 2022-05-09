@@ -13,7 +13,7 @@ setInterval(function() {
   .fadeIn(1000)
   .end()
   .appendTo('#slideshow');
-}, 100);
+}, 1000);
 
 
 
